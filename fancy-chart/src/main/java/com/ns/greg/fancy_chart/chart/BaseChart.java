@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
-import com.ns.greg.fancy_chart.Utils;
 import com.ns.greg.fancy_chart.renderer.BaseRenderer;
 
 /**
@@ -37,7 +36,7 @@ public abstract class BaseChart<T extends BaseRenderer> extends View {
 
   @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    int defaultSize = Utils.convertDpToPixel(50f, getContext());
+    int defaultSize = 150;
     setMeasuredDimension(
         Math.max(getSuggestedMinimumWidth(), resolveSize(defaultSize, widthMeasureSpec)),
         Math.max(getSuggestedMinimumHeight(), resolveSize(defaultSize, heightMeasureSpec)));

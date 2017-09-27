@@ -31,13 +31,11 @@ public abstract class BaseDataSet {
     if (size == 0 || size == 1) {
       return;
     }
-
     for (int i = 0; i < size; i++) {
       float value = getData(i);
       values[0] = value < values[0] ? value : values[0];
       values[1] = value > values[1] ? value : values[1];
     }
-
     minAndMax[0] = values[0];
     minAndMax[1] = values[1];
   }

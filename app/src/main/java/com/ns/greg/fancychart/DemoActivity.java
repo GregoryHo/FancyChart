@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import com.ns.greg.fancy_chart.Utils;
 import com.ns.greg.fancy_chart.chart.FancyLineChart;
 import java.util.ArrayList;
 import java.util.List;

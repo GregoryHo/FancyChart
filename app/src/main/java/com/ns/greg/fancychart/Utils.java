@@ -1,4 +1,4 @@
-package com.ns.greg.fancy_chart;
+package com.ns.greg.fancychart;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
