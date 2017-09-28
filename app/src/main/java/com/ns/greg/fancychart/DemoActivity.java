@@ -24,12 +24,12 @@ public class DemoActivity extends AppCompatActivity {
 
   private void demo1() {
     List<Float> dataList = new ArrayList<>();
-    for (int i = 6; i <= 16; i++) {
-      dataList.add((float) i);
+    for (int i = 1; i <= 4; i++) {
+      dataList.add((float) i / 100);
     }
 
     FancyLineChart lineChart = (FancyLineChart) findViewById(R.id.line_chart_1);
-    lineChart.setChartData(new DemoChartData("TITLE", dataList))
+    lineChart.setChartData(new FloatChartData("TITLE", dataList))
         .setChartBackgroundColor(Color.parseColor("#1A000000"))
         .setMargin(Utils.convertDpToPixel(20f, getApplicationContext()))
         .setTitleColor(Color.DKGRAY)
@@ -47,12 +47,12 @@ public class DemoActivity extends AppCompatActivity {
 
   private void demo2() {
     List<Float> dataList = new ArrayList<>();
-    for (int i = 1; i <= 24; i++) {
-      dataList.add((float) i * 3);
+    for (int i = 5; i <= 20; i++) {
+      dataList.add((float) i);
     }
 
     FancyLineChart lineChart = (FancyLineChart) findViewById(R.id.line_chart_2);
-    lineChart.setChartData(new DemoChartData("" /* or null */, dataList))
+    lineChart.setChartData(new IntegerChartData("" /* or null */, dataList))
         .setMargin(Utils.convertDpToPixel(20f, getApplicationContext()))
         .setChartBackgroundColor(Color.parseColor("#1A000000"))
         .setXAxisLineColor(Color.GRAY)

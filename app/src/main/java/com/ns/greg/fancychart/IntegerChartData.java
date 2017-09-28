@@ -9,9 +9,9 @@ import java.util.List;
  * @since 2017/8/28
  */
 
-public class DemoChartData extends LineChartDataSet {
+public class IntegerChartData extends LineChartDataSet {
 
-  DemoChartData(String title, List<Float> dataList) {
+  IntegerChartData(String title, List<Float> dataList) {
     super(title, dataList);
     setXAxis();
     setYAxis();
@@ -30,11 +30,11 @@ public class DemoChartData extends LineChartDataSet {
 
   private void setYAxis() {
     String[] yAxis =
-        getYAxisValueWithDeltaAsInteger(new float[] { getMinValue(), getMaxValue() }, 6, true);
+        getYAxisValueAsInteger(new float[] { getMinValue(), getMaxValue() }, 6, true);
     setYAxisLabels(yAxis);
   }
 
-  private String[] getYAxisValueWithDeltaAsInteger(float[] values, int length, boolean isNegative) {
+  private String[] getYAxisValueAsInteger(float[] values, int length, boolean isNegative) {
     String[] yAxisLabels = new String[length];
     float[] min_max = values.clone();
     float delta = (min_max[1] - min_max[0]);

@@ -245,7 +245,7 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
     }
 
     int size = yAxis.size();
-    yAxisHeight = getLineChartHeight() / (yAxis.size() - 1);
+    yAxisHeight = getLineChartHeight() / (size - 1);
     // The start x and end x for y-Axis horizontal line
     float lineStartX = lineChartLeft - padding;
     float lineEndX = lineChartRight + padding;

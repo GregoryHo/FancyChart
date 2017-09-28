@@ -83,7 +83,13 @@ public abstract class BaseDataSet {
   }
 
   public float getDeltaValue() {
-    return minAndMax[1] - minAndMax[0] + 1;
+    float delta = minAndMax[1] - minAndMax[0];
+    float offset = 1f;
+    while (delta < offset) {
+      offset /= 10;
+    }
+
+    return delta + offset;
   }
 
   public String getTitle() {
