@@ -24,7 +24,7 @@ public class DemoActivity extends AppCompatActivity {
 
   private void demo1() {
     List<Float> dataList = new ArrayList<>();
-    for (int i = 1; i <= 31; i++) {
+    for (int i = 6; i <= 16; i++) {
       dataList.add((float) i);
     }
 

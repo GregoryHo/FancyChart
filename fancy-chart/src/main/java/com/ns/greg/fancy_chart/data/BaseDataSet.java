@@ -13,6 +13,7 @@ public abstract class BaseDataSet {
   private final String title;
   private final List<Float> dataList = new ArrayList<>();
   private final float[] minAndMax = new float[2];
+  private final float[] chartMinAndMax = new float[2];
 
   BaseDataSet(String title, List<Float> list) {
     this.title = title;
@@ -31,13 +32,24 @@ public abstract class BaseDataSet {
     if (size == 0 || size == 1) {
       return;
     }
+
     for (int i = 0; i < size; i++) {
-      float value = getData(i);
+      float value = dataList.get(i);
       values[0] = value < values[0] ? value : values[0];
       values[1] = value > values[1] ? value : values[1];
     }
+
     minAndMax[0] = values[0];
     minAndMax[1] = values[1];
+    chartMinAndMax[0] = values[0];
+    chartMinAndMax[1] = values[1];
+  }
+
+  void setChartMinAndMax(float[] values) {
+    if (values != null && values.length > 1) {
+      chartMinAndMax[0] = values[0];
+      chartMinAndMax[1] = values[1];
+    }
   }
 
   public void updateDataList(List<Float> list) {
@@ -55,8 +67,11 @@ public abstract class BaseDataSet {
     return dataList.size();
   }
 
-  public float getData(int index) {
-    return dataList.get(index);
+  /**
+   * Return value which is already minus the minimize value
+   */
+  public float getValue(int index) {
+    return dataList.get(index) - chartMinAndMax[0];
   }
 
   public float getMinValue() {

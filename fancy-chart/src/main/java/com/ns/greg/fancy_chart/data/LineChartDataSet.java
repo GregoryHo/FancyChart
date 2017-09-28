@@ -43,6 +43,14 @@ public abstract class LineChartDataSet extends BaseDataSet {
     if (labels != null) {
       yAxisLabels.clear();
       yAxisLabels.addAll(Arrays.asList(labels));
+
+      int length = labels.length;
+      if (length > 1) {
+        float[] values = new float[2];
+        values[0] = Float.parseFloat(labels[length - 1]);
+        values[1] = Float.parseFloat(labels[0]);
+        setChartMinAndMax(values);
+      }
     }
   }
 

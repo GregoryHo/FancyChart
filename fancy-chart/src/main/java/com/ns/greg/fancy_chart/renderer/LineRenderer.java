@@ -207,7 +207,7 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
 
     Rect xAxisFontSize = getTextBound("0", xAxisLabelsPaint);
     lineChartRight -= xAxisFontSize.width();
-    lineChartBottom -= xAxisFontSize.height() * 1.5f;
+    lineChartBottom -= xAxisFontSize.height() * 2f;
   }
 
   private Rect getTextBound(String txt, Paint paint) {
@@ -287,14 +287,14 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
     float rate = getValueRate();
     float chartHeight = lineChartBottom;
     if (size == 1) {
-      float value = getChartData().getData(0);
+      float value = getChartData().getValue(0);
       float y = chartHeight - (rate * value);
       canvas.drawCircle(lineChartLeft, y, pointRadius, pointPaint);
     } else if (size > 1) {
       float pointWidth = getLineChartWidth() / (size - 1);
       for (int i = 0; i <= size - 2; i++) {
-        float value1 = getChartData().getData(i);
-        float value2 = getChartData().getData(i + 1);
+        float value1 = getChartData().getValue(i);
+        float value2 = getChartData().getValue(i + 1);
         float x1 = lineChartLeft + (pointWidth * i);
         float x2 = lineChartLeft + (pointWidth * (i + 1));
         float y1 = chartHeight - (rate * value1);
@@ -317,8 +317,8 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
     float pointWidth = getLineChartWidth() / (size - 1);
     float endY = lineChartBottom;
     for (int i = 0; i <= size - 2; i++) {
-      float value1 = getChartData().getData(i);
-      float value2 = getChartData().getData(i + 1);
+      float value1 = getChartData().getValue(i);
+      float value2 = getChartData().getValue(i + 1);
       float x1 = lineChartLeft + (pointWidth * i);
       float x2 = lineChartLeft + (pointWidth * (i + 1));
       float y1 = chartHeight - (rate * value1);

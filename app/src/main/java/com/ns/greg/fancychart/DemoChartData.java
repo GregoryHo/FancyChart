@@ -20,7 +20,9 @@ public class DemoChartData extends LineChartDataSet {
   private void setXAxis() {
     List<String> xAxis = new ArrayList<>();
     for (int i = 1; i <= 31; i++) {
-      xAxis.add(Integer.toString(i));
+      if (i % 4 == 0 || i == 1) {
+        xAxis.add("0" + i + "PM");
+      }
     }
 
     setXAxisLabels(xAxis);
@@ -28,7 +30,7 @@ public class DemoChartData extends LineChartDataSet {
 
   private void setYAxis() {
     String[] yAxis =
-        getYAxisValueWithDeltaAsInteger(new float[] { getMinValue(), getMaxValue() }, 6, false);
+        getYAxisValueWithDeltaAsInteger(new float[] { getMinValue(), getMaxValue() }, 6, true);
     setYAxisLabels(yAxis);
   }
 
