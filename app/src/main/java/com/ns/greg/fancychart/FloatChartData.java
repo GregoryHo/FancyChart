@@ -49,7 +49,8 @@ public class FloatChartData extends LineChartDataSet {
       minValue = "0.00";
       min_max[0] = rate;
     } else {
-      minValue = Double.toString(decimalFormat(2, (min_max[0] - rate), true));
+      double value = decimalFormat(2, (min_max[0] - rate), true);
+      minValue = value == 0 ? "0.00" : Double.toString(value);
     }
 
     yAxisLabels[length - 1] = minValue;

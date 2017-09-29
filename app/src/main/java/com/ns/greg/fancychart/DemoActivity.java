@@ -24,8 +24,8 @@ public class DemoActivity extends AppCompatActivity {
 
   private void demo1() {
     List<Float> dataList = new ArrayList<>();
-    for (int i = 1; i <= 4; i++) {
-      dataList.add((float) i / 100);
+    for (int i = 1; i <= 5; i++) {
+      dataList.add(0.02f);
     }
 
     FancyLineChart lineChart = (FancyLineChart) findViewById(R.id.line_chart_1);
@@ -47,8 +47,8 @@ public class DemoActivity extends AppCompatActivity {
 
   private void demo2() {
     List<Float> dataList = new ArrayList<>();
-    for (int i = 5; i <= 20; i++) {
-      dataList.add((float) i);
+    for (int i = 1; i <= 5; i++) {
+      dataList.add((float) 1);
     }
 
     FancyLineChart lineChart = (FancyLineChart) findViewById(R.id.line_chart_2);
