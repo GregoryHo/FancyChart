@@ -38,10 +38,11 @@ public class FloatChartData extends LineChartDataSet {
     float[] min_max = values.clone();
     float delta = (min_max[1] - min_max[0]);
     float rate;
+    float minRate = 0.01f;
     if (delta != 0) {
-      rate = (float) (decimalFormat(2, delta / (length - 2), true));
+      rate = (float) (decimalFormat(2, delta / (length - 2), true) + minRate);
     } else {
-      rate = 0.01f;
+      rate = minRate;
     }
 
     String minValue;

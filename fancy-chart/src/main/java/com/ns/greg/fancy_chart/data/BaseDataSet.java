@@ -83,20 +83,7 @@ public abstract class BaseDataSet {
   }
 
   public float getDeltaValue() {
-    float delta = minAndMax[1] - minAndMax[0];
-    float offset = 1f;
-    if (delta == 0) {
-      delta = chartMinAndMax[1] - chartMinAndMax[0];
-      offset = -1f;
-    }
-
-    while (delta < Math.abs(offset)) {
-      offset /= 10;
-    }
-
-
-
-    return delta + offset;
+    return chartMinAndMax[1] - chartMinAndMax[0];
   }
 
   public String getTitle() {

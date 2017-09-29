@@ -226,7 +226,7 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
 
 
   private float getValueRate() {
-    return (getLineChartHeight() - yAxisHeight) / getChartData().getDeltaValue();
+    return getLineChartHeight() / getChartData().getDeltaValue();
   }
 
   private void drawChart(Canvas canvas) {
