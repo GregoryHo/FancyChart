@@ -24,8 +24,8 @@ public class DemoActivity extends AppCompatActivity {
 
   private void demo1() {
     List<Float> dataList = new ArrayList<>();
-    for (int i = 1; i <= 5; i++) {
-      dataList.add(0.01f * i);
+    for (int i = 1; i <= 10; i++) {
+      dataList.add(0.02f * i);
     }
 
     FancyLineChart lineChart = (FancyLineChart) findViewById(R.id.line_chart_1);
@@ -47,8 +47,9 @@ public class DemoActivity extends AppCompatActivity {
 
   private void demo2() {
     List<Float> dataList = new ArrayList<>();
-    dataList.add(45.3f);
-    dataList.add(44.5f);
+    for (int i = 1; i <= 10; i++) {
+      dataList.add(5f);
+    }
 
     FancyLineChart lineChart = (FancyLineChart) findViewById(R.id.line_chart_2);
     lineChart.setChartData(new IntegerChartData("" /* or null */, dataList))
@@ -59,7 +60,7 @@ public class DemoActivity extends AppCompatActivity {
         .setXAxisLabelColor(Color.BLACK)
         .setYAxisLabelColor(Color.BLACK)
         .setDataColors(new int[] { getResources().getColor(R.color.colorPrimary) })
-        .setPointRadius(0f)
+        .setPointRadius(Utils.convertDpToPixel(2f, getApplicationContext()))
         .invalidate();
   }
 
