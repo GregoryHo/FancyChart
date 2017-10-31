@@ -29,7 +29,7 @@ public class DemoActivity extends AppCompatActivity {
     }
 
     FancyLineChart lineChart = (FancyLineChart) findViewById(R.id.line_chart_1);
-    lineChart.setChartData(new FloatChartData("TITLE", dataList))
+    lineChart.setChartData(new FloatChartData("Very Long Title", dataList))
         .setChartBackgroundColor(Color.parseColor("#1A000000"))
         .setMargin(Utils.convertDpToPixel(20f, getApplicationContext()))
         .setTitleColor(Color.DKGRAY)
@@ -52,7 +52,7 @@ public class DemoActivity extends AppCompatActivity {
     }
 
     FancyLineChart lineChart = (FancyLineChart) findViewById(R.id.line_chart_2);
-    lineChart.setChartData(new IntegerChartData("" /* or null */, dataList))
+    lineChart.setChartData(new IntegerChartData("Title" /* or null */, dataList))
         .setMargin(Utils.convertDpToPixel(20f, getApplicationContext()))
         .setChartBackgroundColor(Color.parseColor("#1A000000"))
         .setXAxisLineColor(Color.GRAY)

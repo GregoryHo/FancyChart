@@ -224,7 +224,6 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
     return lineChartBottom - lineChartTop;
   }
 
-
   private float getValueRate() {
     return getLineChartHeight() / getChartData().getDeltaValue();
   }
@@ -365,7 +364,8 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
   private void drawTitle(Canvas canvas) {
     int titleWidth = titleFontRect.width();
     if (titleWidth > 0) {
-      canvas.drawText(getChartData().getTitle(), lineChartLeft - (titleWidth / 2),
+      float offset = titleWidth > yAxisWidth * 2 ? yAxisWidth : (titleWidth / 2);
+      canvas.drawText(getChartData().getTitle(), lineChartLeft - offset,
           getChartTop() + (titleFontRect.height() / 2), titlePaint);
     }
   }
