@@ -8,7 +8,13 @@ Chart which fancy. lol
 
 ### Feuatures
 **`Title`**: `Size`, `Color`
+
 **`Labels`**: `Size`, `Color` 
+
 **`Line`**: `Size`, `Color`
+
 **`Point`**: `Size`, `Color`
-**`Background`**: `Margin', `Color`
+
+**`Background`**: `Margin`, `Color`
+
+**`Data`**: `Single Color`, `Gradiant Color`
