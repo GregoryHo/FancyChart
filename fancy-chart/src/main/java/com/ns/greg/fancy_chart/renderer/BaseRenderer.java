@@ -20,7 +20,18 @@ public abstract class BaseRenderer<T extends BaseDataSet> implements BaseFeature
   private int margin;
   private int color = Color.TRANSPARENT;
 
-  public abstract void onDraw(Canvas canvas);
+  public void onDraw(Canvas canvas) {
+    if (getChartData() == null) {
+      return;
+    }
+
+    calculateChartSize();
+    drawChart(canvas);
+  }
+
+  protected abstract void calculateChartSize();
+
+  protected abstract void drawChart(Canvas canvas);
 
   @Override public void setChartData(T dataSet) {
     this.dataSet = dataSet;
@@ -95,5 +106,13 @@ public abstract class BaseRenderer<T extends BaseDataSet> implements BaseFeature
 
   public int getChartBottom() {
     return bottom - margin;
+  }
+
+  public int getChartWidth() {
+    return getChartRight() - getChartLeft();
+  }
+
+  public int getChartHeight() {
+    return getChartBottom() - getChartTop();
   }
 }

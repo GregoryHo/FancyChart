@@ -8,6 +8,7 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.Shader;
 import com.ns.greg.fancy_chart.data.LineChartDataSet;
+import com.ns.greg.fancy_chart.utils.MeasureUtils;
 import java.util.List;
 
 /**
@@ -51,51 +52,43 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
   private float[] gradients;
 
   public LineRenderer() {
+    // [TITLE]
     titlePaint = new Paint();
     titlePaint.setColor(Color.RED);
     titlePaint.setAntiAlias(true);
     titlePaint.setTextSize(40f);
-
+    // [Y-AXIS LABELS]
     yAxisLabelsPaint = new Paint();
     yAxisLabelsPaint.setColor(Color.BLACK);
     yAxisLabelsPaint.setAntiAlias(true);
     yAxisLabelsPaint.setTextSize(30f);
-
+    // [Y-AXIS LINE]
     yAxisLinePaint = new Paint();
     yAxisLinePaint.setColor(Color.GRAY);
     yAxisLinePaint.setAntiAlias(true);
     yAxisLinePaint.setStrokeWidth(2);
-
+    // [X-AXIS LABELS]
     xAxisLabelsPaint = new Paint();
     xAxisLabelsPaint.setColor(Color.BLACK);
     xAxisLabelsPaint.setAntiAlias(true);
     xAxisLabelsPaint.setTextSize(30f);
-
+    // [X-AXIS LINE]
     xAxisLinePaint = new Paint();
     xAxisLinePaint.setColor(Color.GRAY);
     xAxisLinePaint.setAntiAlias(true);
     xAxisLinePaint.setStrokeWidth(2);
-
+    // [LINE]
     linePaint = new Paint();
     linePaint.setColor(Color.BLUE);
     linePaint.setStrokeWidth(2);
     linePaint.setAntiAlias(true);
-
+    // [POINT]
     pointPaint = new Paint();
     pointPaint.setColor(Color.RED);
     pointPaint.setStrokeWidth(1f);
     pointPaint.setAntiAlias(true);
-
     pathPaint = new Paint();
     pathPaint.setAntiAlias(true);
-  }
-
-  @Override public void setTitleTextSize(float size) {
-    titlePaint.setTextSize(size);
-  }
-
-  @Override public void setTitleColor(int color) {
-    titlePaint.setColor(color);
   }
 
   @Override public void setPointRadius(float radius) {
@@ -134,24 +127,23 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
     yAxisLabelsPaint.setColor(color);
   }
 
-  @Override public void setDataColors(int[] colors) {
+  @Override public void setDataColors(int... colors) {
     this.dataColors = colors;
   }
 
-  @Override public void setDataColorGradients(float[] gradients) {
+  @Override public void setDataColorGradients(float... gradients) {
     this.gradients = gradients;
   }
 
-  public void onDraw(Canvas canvas) {
-    if (getChartData() == null) {
-      return;
-    }
-
-    calculateChartSize();
-    drawChart(canvas);
+  @Override public void setTitleTextSize(float size) {
+    titlePaint.setTextSize(size);
   }
 
-  private void calculateChartSize() {
+  @Override public void setTitleColor(int color) {
+    titlePaint.setColor(color);
+  }
+
+  @Override protected void calculateChartSize() {
     calLeftAndTop();
     calRightAndBottom();
   }
@@ -174,16 +166,15 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
     }
 
     // Y-axis labels
-    yAxisFontRect = getTextBound("0", yAxisLabelsPaint);
+    yAxisFontRect = MeasureUtils.getTextBound("0", yAxisLabelsPaint);
     yAxisWidth += maxYAxisTxtWidth;
     lineChartLeft += maxYAxisTxtWidth;
     lineChartLeft += yAxisFontRect.width() * 1.5f;
     lineChartTop += (yAxisFontRect.height() * 0.5f);
-
     // Title
     String title = getChartData().getTitle();
     if (title != null) {
-      titleFontRect = getTextBound(title, titlePaint);
+      titleFontRect = MeasureUtils.getTextBound(title, titlePaint);
     }
 
     lineChartTop += titleFontRect.height() * 1.5f;
@@ -205,15 +196,9 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
       }
     }
 
-    Rect xAxisFontSize = getTextBound("0", xAxisLabelsPaint);
+    Rect xAxisFontSize = MeasureUtils.getTextBound("0", xAxisLabelsPaint);
     lineChartRight -= xAxisFontSize.width();
     lineChartBottom -= xAxisFontSize.height() * 2f;
-  }
-
-  private Rect getTextBound(String txt, Paint paint) {
-    Rect rect = new Rect();
-    paint.getTextBounds(txt, 0, txt.length(), rect);
-    return rect;
   }
 
   private float getLineChartWidth() {
@@ -228,7 +213,7 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
     return getLineChartHeight() / getChartData().getDeltaValue();
   }
 
-  private void drawChart(Canvas canvas) {
+  @Override protected void drawChart(Canvas canvas) {
     canvas.drawColor(getChartColor());
     drawYAxis(canvas);
     drawXAxis(canvas);
@@ -322,7 +307,6 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
       float x2 = lineChartLeft + (pointWidth * (i + 1));
       float y1 = chartHeight - (rate * value1);
       float y2 = chartHeight - (rate * value2);
-
       setPath(x1, y1, x2, y2);
       endY = Math.min(endY, y1);
       endY = Math.min(endY, y2);

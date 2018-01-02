@@ -10,10 +10,6 @@ import com.ns.greg.fancy_chart.data.LineChartDataSet;
 
 public interface LineFeaturesProvider<T> extends BaseFeaturesProvider<T, LineChartDataSet> {
 
-  T setTitleTextSize(float size);
-
-  T setTitleColor(@ColorInt int color);
-
   T setPointRadius(float radius);
 
   T setPointColor(@ColorInt int color);
@@ -32,7 +28,7 @@ public interface LineFeaturesProvider<T> extends BaseFeaturesProvider<T, LineCha
 
   T setYAxisLineColor(@ColorInt int color);
 
-  T setDataColors(@ColorInt int[] colors);
+  T setDataColors(@ColorInt int... colors);
 
-  T setDataColorGradients(float[] gradients);
+  T setDataColorGradients(float... gradients);
 }

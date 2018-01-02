@@ -9,10 +9,6 @@ import android.support.annotation.ColorInt;
 
 interface LineFeatures {
 
-  void setTitleTextSize(float size);
-
-  void setTitleColor(@ColorInt int color);
-
   void setPointRadius(float radius);
 
   void setPointColor(@ColorInt int color);
@@ -31,7 +27,7 @@ interface LineFeatures {
 
   void setYAxisLabelColor(@ColorInt int color);
 
-  void setDataColors(@ColorInt int[] colors);
+  void setDataColors(@ColorInt int... colors);
 
-  void setDataColorGradients(float[] gradients);
+  void setDataColorGradients(float... gradients);
 }

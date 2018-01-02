@@ -1,7 +1,6 @@
 package com.ns.greg.fancy_chart.chart;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import com.ns.greg.fancy_chart.data.LineChartDataSet;
@@ -28,12 +27,18 @@ public class FancyLineChart extends BaseChart<LineRenderer>
     super(context, attrs, defStyle);
   }
 
-  @Override protected void onDraw(Canvas canvas) {
-    super.onDraw(canvas);
-  }
-
   @Override protected LineRenderer rendererImp() {
     return new LineRenderer();
+  }
+
+  @Override public FancyLineChart setTitleTextSize(float size) {
+    getRenderer().setTitleTextSize(size);
+    return this;
+  }
+
+  @Override public FancyLineChart setTitleColor(@ColorInt int color) {
+    getRenderer().setTitleColor(color);
+    return this;
   }
 
   @Override public FancyLineChart setChartData(LineChartDataSet dataSet) {
@@ -51,16 +56,6 @@ public class FancyLineChart extends BaseChart<LineRenderer>
     return this;
   }
 
-
-  @Override public FancyLineChart setTitleTextSize(float size) {
-    getRenderer().setTitleTextSize(size);
-    return this;
-  }
-
-  @Override public FancyLineChart setTitleColor(@ColorInt int color) {
-    getRenderer().setTitleColor(color);
-    return this;
-  }
 
   @Override public FancyLineChart setPointRadius(float radius) {
     getRenderer().setPointRadius(radius);
@@ -107,12 +102,12 @@ public class FancyLineChart extends BaseChart<LineRenderer>
     return this;
   }
 
-  @Override public FancyLineChart setDataColors(@ColorInt int[] colors) {
+  @Override public FancyLineChart setDataColors(@ColorInt int... colors) {
     getRenderer().setDataColors(colors);
     return this;
   }
 
-  @Override public FancyLineChart setDataColorGradients(float[] gradients) {
+  @Override public FancyLineChart setDataColorGradients(float... gradients) {
     getRenderer().setDataColorGradients(gradients);
     return this;
   }

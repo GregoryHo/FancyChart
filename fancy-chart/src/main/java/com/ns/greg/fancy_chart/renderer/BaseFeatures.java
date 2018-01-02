@@ -10,6 +10,10 @@ import com.ns.greg.fancy_chart.data.BaseDataSet;
 
 interface BaseFeatures<T extends BaseDataSet> {
 
+  void setTitleTextSize(float size);
+
+  void setTitleColor(@ColorInt int color);
+
   void setChartData(T data);
 
   void setMargin(float margin);
