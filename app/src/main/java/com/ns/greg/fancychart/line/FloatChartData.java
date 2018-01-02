@@ -1,4 +1,4 @@
-package com.ns.greg.fancychart;
+package com.ns.greg.fancychart.line;
 
 import com.ns.greg.fancy_chart.data.LineChartDataSet;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FloatChartData extends LineChartDataSet {
 
-  FloatChartData(String title, List<Float> dataList) {
+  public FloatChartData(String title, List<Float> dataList) {
     super(title, dataList);
     setXAxis();
     setYAxis();

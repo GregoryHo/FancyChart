@@ -38,6 +38,19 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <com.ns.greg.fancy_chart.chart.FancyPieChart
+          android:id="@+id/pie_chart_1"
+          android:layout_width="match_parent"
+          android:layout_height="300dp"
+          />
+
+    </LinearLayout>
+
   </LinearLayout>
 
 </ScrollView>
