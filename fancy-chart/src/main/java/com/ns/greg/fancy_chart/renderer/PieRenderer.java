@@ -25,15 +25,15 @@ public class PieRenderer extends BaseRenderer<PieChartDataSet> implements PieFea
   /*--------------------------------
    * Padding, Font , Chart size... etc
    *-------------------------------*/
-  private Rect titleFontRect = new Rect();
+  private final Rect titleFontRect = new Rect();
   private float pieChartTop;
   private float radius;
 
   /*--------------------------------
    * Chart feature
    *-------------------------------*/
-  private float[] ratios;
-  private int[] colors;
+  private float[] ratios = new float[] { 1 };
+  private int[] colors = new int[] { Color.BLACK };
 
   public PieRenderer() {
     // [TITLE]
@@ -71,7 +71,7 @@ public class PieRenderer extends BaseRenderer<PieChartDataSet> implements PieFea
     // Title
     String title = getChartData().getTitle();
     if (title != null) {
-      titleFontRect = MeasureUtils.getTextBound(title, titlePaint);
+      titleFontRect.set(MeasureUtils.getTextBound(title, titlePaint));
     }
 
     float offset = titleFontRect.height() * 1.5f;
