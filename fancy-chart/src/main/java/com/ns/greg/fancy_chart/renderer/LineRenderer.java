@@ -35,8 +35,8 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
    * Padding, Font , Chart size... etc
    *-------------------------------*/
   private final float padding = 6f;
-  private Rect yAxisFontRect = new Rect();
-  private Rect titleFontRect = new Rect();
+  private final Rect yAxisFontRect = new Rect();
+  private final Rect titleFontRect = new Rect();
   private float yAxisWidth;
   private float yAxisHeight;
   private float lineChartLeft;
@@ -166,7 +166,7 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
     }
 
     // Y-axis labels
-    yAxisFontRect = MeasureUtils.getTextBound("0", yAxisLabelsPaint);
+    yAxisFontRect.set(MeasureUtils.getTextBound("0", yAxisLabelsPaint));
     yAxisWidth += maxYAxisTxtWidth;
     lineChartLeft += maxYAxisTxtWidth;
     lineChartLeft += yAxisFontRect.width() * 1.5f;
@@ -174,7 +174,7 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
     // Title
     String title = getChartData().getTitle();
     if (title != null) {
-      titleFontRect = MeasureUtils.getTextBound(title, titlePaint);
+      titleFontRect.set(MeasureUtils.getTextBound(title, titlePaint));
     }
 
     lineChartTop += titleFontRect.height() * 1.5f;
@@ -328,6 +328,7 @@ public class LineRenderer extends BaseRenderer<LineChartDataSet> implements Line
                 gradients, Shader.TileMode.CLAMP);
         pathPaint.setShader(linearGradient);
       } else {
+        pathPaint.setShader(null);
         pathPaint.setColor(dataColors[0]);
       }
     } else {
